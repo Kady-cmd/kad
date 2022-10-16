@@ -13,7 +13,7 @@ if($selAcc->rowCount() > 0)
 {
   $_SESSION['admin'] = array(
   	 'admin_id' => $selAccRow['admin_id'],
-  	 'adminnakalogin' => true
+  	 'adminLogin' => true
   );
   $res = array("res" => "success");
 

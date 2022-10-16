@@ -4,7 +4,7 @@
             <div class="app-page-title">
                 <div class="page-title-wrapper">
                     <div class="page-title-heading">
-                        <div>MANAGE COURSE</div>
+                        <div>MANAGE COURSES</div>
                     </div>
                 </div>
             </div>        

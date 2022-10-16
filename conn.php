@@ -1,16 +1,15 @@
 <?php 
-
 $host = "localhost";
 $user = "root";
-$pass = "";
-$db   = "cee_db";
+$pass = "root";
+$db = "kad";
 $conn = null;
 
-try {
+try 
+{
   $conn = new PDO("mysql:host={$host};dbname={$db};",$user,$pass);
-} catch (Exception $e) {
-  
+} 
+catch (Exception $e) 
+{
+  print_r($e->getMessage());  
 }
-
-
- ?>

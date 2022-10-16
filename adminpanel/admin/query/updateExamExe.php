@@ -1,19 +1,16 @@
 <?php 
- include("../../../conn.php");
- 
- extract($_POST);
+include("../../../conn.php");
 
+extract($_POST);
+$updExam = $conn->query("UPDATE exam_tbl SET cou_id='$courseId', ex_title='$examTitle', ex_type='$examType', ex_time_limit='$examLimit', ex_questlimit_display='$examQuestDipLimit' , ex_description='$examDesc' WHERE  ex_id='$examId' ");
 
- $updExam = $conn->query("UPDATE exam_tbl SET cou_id='$courseId', ex_title='$examTitle', ex_time_limit='$examLimit', ex_questlimit_display='$examQuestDipLimit' , ex_description='$examDesc' WHERE  ex_id='$examId' ");
+if($updExam)
+{
+  $res = array("res" => "success", "msg" => $examTitle);
+}
+else
+{
+  $res = array("res" => "failed");
+}
 
- if($updExam)
- {
-   $res = array("res" => "success", "msg" => $examTitle);
- }
- else
- {
-   $res = array("res" => "failed");
- }
-
- echo json_encode($res);
- ?>
+echo json_encode($res);

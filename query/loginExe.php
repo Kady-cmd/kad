@@ -13,7 +13,7 @@ if($selAcc->rowCount() > 0)
 {
   $_SESSION['examineeSession'] = array(
   	 'exmne_id' => $selAccRow['exmne_id'],
-  	 'examineenakalogin' => true
+  	 'examineeLogin' => true
   );
   $res = array("res" => "success");
 

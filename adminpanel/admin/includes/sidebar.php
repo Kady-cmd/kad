@@ -31,13 +31,13 @@
                     </div>    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                <li class="app-sidebar__heading"><a href="home.php">Dashboards</a></li>
+                                <li class="app-sidebar__heading"><a href="home.php">Dashboard</a></li>
 
-                                <li class="app-sidebar__heading">MANAGE COURSE</li>
+                                <li class="app-sidebar__heading">Manage Courses</li>
                                 <li>
                                     <a href="#">
                                          <i class="metismenu-icon pe-7s-display2"></i>
-                                         Course
+                                         Courses
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
@@ -50,18 +50,18 @@
                                         <li>
                                             <a href="home.php?page=manage-course">
                                                 <i class="metismenu-icon">
-                                                </i>Manage Course
+                                                </i>Manage Courses
                                             </a>
                                         </li>
                                        
                                     </ul>
                                 </li>
                                
-                                <li class="app-sidebar__heading">MANAGE EXAM</li>
+                                <li class="app-sidebar__heading">Manage Exams</li>
                                 <li>
                                     <a href="#">
                                          <i class="metismenu-icon pe-7s-display2"></i>
-                                         Exam
+                                         Exams
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
                                     <ul>
@@ -74,7 +74,7 @@
                                         <li>
                                             <a href="home.php?page=manage-exam">
                                                 <i class="metismenu-icon">
-                                                </i>Manage Exam
+                                                </i>Manage Exams
                                             </a>
                                         </li>
                                        
@@ -82,7 +82,7 @@
                                 </li>
                            
                          
-                                <li class="app-sidebar__heading">MANAGE EXAMINEE</li>
+                                <li class="app-sidebar__heading">Manage Examinees</li>
                                 <li>
                                     <a href="" data-toggle="modal" data-target="#modalForAddExaminee">
                                         <i class="metismenu-icon pe-7s-add-user">
@@ -92,10 +92,11 @@
                                 <li>
                                     <a href="home.php?page=manage-examinee">
                                         <i class="metismenu-icon pe-7s-users">
-                                        </i>Manage Examinee
+                                        </i>Manage Examinees
                                     </a>
                                 </li>
-                                <li class="app-sidebar__heading">RANKING</li>
+
+                                <li class="app-sidebar__heading">Ranking</li>
                                 <li>
                                     <a href="home.php?page=ranking-exam">
                                         <i class="metismenu-icon pe-7s-cup">
@@ -104,7 +105,7 @@
                                 </li>
 
 
-                                <li class="app-sidebar__heading">REPORTS</li>
+                                <li class="app-sidebar__heading">Reports</li>
                                 <li>
                                     <a href="home.php?page=examinee-result">
                                         <i class="metismenu-icon pe-7s-cup">
@@ -113,7 +114,7 @@
                                 </li>
                               
 
-                                 <li class="app-sidebar__heading">FEEDBACKS</li>
+                                 <li class="app-sidebar__heading">Feedbacks</li>
                                 <li>
                                     <a href="home.php?page=feedbacks">
                                         <i class="metismenu-icon pe-7s-chat">
