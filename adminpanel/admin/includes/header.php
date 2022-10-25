@@ -5,7 +5,6 @@ include("../../conn.php");
 include("query/countData.php");
 ?>
 
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +68,7 @@ include("query/countData.php");
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <button type="button" tabindex="0" class="dropdown-item">Admin Account</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
-                                            <a href="query/logoutExe.php" class="dropdown-item">LOG OUT</a>
+                                            <a href="query/logoutExe.php" class="dropdown-item">Log Out</a>
                                         </div>
                                     </div>
                                 </div>

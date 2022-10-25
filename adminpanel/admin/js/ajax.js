@@ -334,4 +334,36 @@ function refreshDiv() {
   $('#refreshData').load(document.URL + ' #refreshData');
 }
 
+// Update Answer
+$(document).on("click", "#updateAnswer", function (e) {
+  e.preventDefault();
+  var id = $(this).data("id");
+  var val = $(this).data("val");
 
+  $.ajax({
+    type: "post",
+    url: "query/updateAnswerExe.php",
+    dataType: "json",
+    data: { 
+      id: id,
+      correct: val ? 1 : 0,
+    },
+    cache: false,
+    success: function (data) {
+      if (data.res == "success") {
+        Swal.fire(
+          'Success',
+          'Examinee Answer Updated Successfully',
+          'success'
+        )
+        refreshDiv();
+      }
+    },
+    error: function (xhr, ErrorStatus, error) {
+      console.log(error);
+    }
+
+  });
+
+  return false;
+});

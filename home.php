@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['examineeSession']['examineeLogin']) == true) 
-  header("location:index.php");
+if (!isset($_SESSION['examineeSession']['examineeLogin']) == true)
+    header("location:index.php");
 ?>
 
 <?php include("conn.php"); ?>
@@ -17,22 +17,22 @@ if (!isset($_SESSION['examineeSession']['examineeLogin']) == true)
 
   if ($page != '') 
   {
-    if ($page == "exam") 
-    {
-      include("pages/exam.php");
-    } 
-    else if ($page == "result") 
-    {
-      include("pages/result.php");
-    } 
-    else if ($page == "myscores") 
-    {
-      include("pages/myscores.php");
-    }
-  }
+      if ($page == "exam") 
+      {
+        include("pages/exam.php");
+      } 
+      else if ($page == "result") 
+      {
+        include("pages/result.php");
+      } 
+      else if ($page == "myscores") 
+      {
+        include("pages/myscores.php");
+      }
+  } 
   else 
   {
-    include("pages/home.php");
+      include("pages/home.php");
   }
   ?>
 

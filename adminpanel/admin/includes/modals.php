@@ -262,17 +262,11 @@
                   <label>Choice D</label>
                   <input type="" name="choice_D" id="choice_D" class="form-control" placeholder="Input choice D" autocomplete="off">
                 </div>
-
-                <div class="form-group">
-                  <label>Correct Answer</label>
-                  <input type="" name="correctAnswer" id="" class="form-control" placeholder="Input correct answer" autocomplete="off">
-                </div>
               </fieldset>
 
               <div class="form-group">
                 <label>Correct Answer</label>
-                <textarea type="" name="correctAnswer" id="correctAnswer" class="form-control" placeholder="Input correct answer" autocomplete="off" rows="5">
-                </textarea>
+                <textarea type="" name="correctAnswer" id="correctAnswer" class="form-control" placeholder="Input correct answer" autocomplete="off" rows="5"></textarea>
               </div>
             </div>
           </div>
