@@ -22,8 +22,8 @@ $(document).on("submit", "#addCourseFrm", function () {
   $.post("query/addCourseExe.php", $(this).serialize(), function (data) {
     if (data.res == "exist") {
       Swal.fire(
-        'Already Exist',
-        data.course_name.toUpperCase() + ' Already Exist',
+        'Already Exists',
+        data.course_name.toUpperCase() + ' Already Exists',
         'error'
       )
     }
@@ -87,6 +87,84 @@ $(document).on("click", "#deleteCourse", function (e) {
   return false;
 });
 
+// Add Unit 
+$(document).on("submit", "#addUnitFrm", function () {
+  $.post("query/addUnitExe.php", $(this).serialize(), function (data) {
+    if (data.res == "noSelectedCourse") {
+      Swal.fire(
+        'No Course Selected',
+        'Please select a course',
+        'error'
+      )
+    }
+    else if (data.res == "exist") {
+      Swal.fire(
+        'Already Exists',
+        data.unit_name.toUpperCase() + ' Already Exists',
+        'error'
+      )
+    }
+    else if (data.res == "success") {
+      Swal.fire(
+        'Success',
+        data.unit_name.toUpperCase() + ' Successfully Added',
+        'success'
+      )
+      $('#addUnitFrm')[0].reset();
+      $('#unit_name').val("");
+      refreshDiv();
+      setTimeout(function () {
+        $('#body').load(document.URL);
+      }, 2000);
+    }
+  }, 'json')
+  return false;
+});
+
+// Update Unit
+$(document).on("submit", "#updateUnitFrm", function () {
+  $.post("query/updateUnitExe.php", $(this).serialize(), function (data) {
+    if (data.res == "success") {
+      Swal.fire(
+        'Success',
+        'Selected unit has been successfully updated!',
+        'success'
+      )
+      refreshDiv();
+    }
+  }, 'json')
+  return false;
+});
+
+// Delete Unit
+$(document).on("click", "#deleteUnit", function (e) {
+  e.preventDefault();
+  var id = $(this).data("id");
+  $.ajax({
+    type: "post",
+    url: "query/deleteUnitExe.php",
+    dataType: "json",
+    data: { id: id },
+    cache: false,
+    success: function (data) {
+      if (data.res == "success") {
+        Swal.fire(
+          'Success',
+          'Selected unit has been successfully deleted',
+          'success'
+        )
+        refreshDiv();
+      }
+    },
+    error: function (xhr, ErrorStatus, error) {
+      console.log(status.error);
+    }
+
+  });
+
+  return false;
+});
+
 // Delete Exam
 $(document).on("click", "#deleteExam", function (e) {
   e.preventDefault();
@@ -121,8 +199,16 @@ $(document).on("submit", "#addExamFrm", function () {
   $.post("query/addExamExe.php", $(this).serialize(), function (data) {
     if (data.res == "noSelectedCourse") {
       Swal.fire(
-        'No Course',
-        'Please select course',
+        'No Course Selected',
+        'Please select a course',
+        'error'
+      )
+    }
+
+    if (data.res == "noSelectedUnit") {
+      Swal.fire(
+        'No Unit Selected',
+        'Please select a unit',
         'error'
       )
     }

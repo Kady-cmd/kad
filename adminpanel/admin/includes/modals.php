@@ -26,7 +26,6 @@
   </div>
 </div>
 
-
 <!-- Modal For Update Course -->
 <div class="modal fade myModal" id="updateCourse-<?php echo $selCourseRow['cou_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog " role="document">
@@ -55,14 +54,13 @@
   </div>
 </div>
 
-
-<!-- Modal For Add Exam -->
-<div class="modal fade" id="modalForExam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal For Add Unit -->
+<div class="modal fade" id="modalForAddUnit" tabindex="-1" role="dialog" aria-labelledby="addNewUnit" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <form class="refreshFrm" id="addExamFrm" method="post">
+    <form class="refreshFrm" id="addUnitFrm" method="post">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add Exam</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Add Unit</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -84,6 +82,61 @@
                 <?php }
                 ?>
               </select>
+            </div>
+
+            <div class="form-group">
+              <label>Unit Code</label>
+              <input type="" name="unit_code" id="unit_code" class="form-control" placeholder="Input Unit Code" required="" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label>Unit Name</label>
+              <input type="" name="unit_name" id="unit_name" class="form-control" placeholder="Input Unit Name" required="" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Now</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal For Add Exam -->
+<div class="modal fade" id="modalForExam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form class="refreshFrm" id="addExamFrm" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Exam</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Select Course</label>
+              <select class="form-control" id="examCourse" name="examCourse">
+                <option value="0">Select Course</option>
+                <?php
+                $selCourse = $conn->query("SELECT * FROM course_tbl ORDER BY cou_id DESC");
+                if ($selCourse->rowCount() > 0) {
+                  while ($selCourseRow = $selCourse->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <option value="<?php echo $selCourseRow['cou_id']; ?>"><?php echo $selCourseRow['cou_name']; ?></option>
+                  <?php }
+                } else { ?>
+                  <option value="0">No Course Found</option>
+                <?php }
+                ?>
+              </select>
+            </div>
+
+            <div class="form-group" id="selectUnit">
+              <label>Select Unit</label>
+              <span id="examUnit"></span>
             </div>
 
             <div class="form-group">
@@ -134,7 +187,6 @@
   </div>
 </div>
 
-
 <!-- Modal For Add Examinee -->
 <div class="modal fade" id="modalForAddExaminee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -161,7 +213,7 @@
             <div class="form-group">
               <label>Gender</label>
               <select class="form-control" name="gender" id="gender">
-                <option value="0">Select gender</option>
+                <option value="0">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
@@ -289,4 +341,28 @@
     $("#" + a).show();
     $('#correctAnswer').val('');
   });
+
+  $(document).ready(function() {
+    $("#selectUnit").hide();
+    $("#examUnit").hide();
+    $('#examCourse').on('change', getCourseUnits);
+  });
+
+  function getCourseUnits() {
+    var selected = $('#examCourse').val();
+    if (selected) {
+      $.ajax({
+        type: 'POST',
+        url: 'query/courseUnits.php',
+        data: 'cou_id=' + selected,
+        success: function(html) {
+          $('#examUnit').html(html);
+          $("#selectUnit").show();
+          $("#examUnit").show();
+        }
+      });
+    } else {
+      $('#examCourse').html('<option value="">Select Unit First</option>');
+    }
+  }
 </script>

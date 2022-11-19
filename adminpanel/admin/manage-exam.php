@@ -11,10 +11,10 @@ if (!isset($_SESSION['admin']['adminLogin']) == true) header("location:index.php
 <?php include("includes/ui-theme.php"); ?>
 
 <div class="app-main">
-  <!-- sidebar diri  -->
-  <?php include("includes/sidebar.php"); ?>
+<!-- sidebar diri  -->
+<?php include("includes/sidebar.php"); ?>
 
-  <?php
+<?php
   $exId = $_GET['id'];
 
   $selExam = $conn->query("SELECT * FROM exam_tbl WHERE ex_id='$exId' ");
@@ -22,8 +22,10 @@ if (!isset($_SESSION['admin']['adminLogin']) == true) header("location:index.php
 
   $courseId = $selExamRow['cou_id'];
   $selCourse = $conn->query("SELECT cou_name as courseName FROM course_tbl WHERE cou_id='$courseId'")->fetch(PDO::FETCH_ASSOC);
-  ?>
 
+  $unitId = $selExamRow['unit_id'];
+  $selUnit = $conn->query("SELECT unit_name as unitName FROM unit_tbl WHERE unit_id='$unitId'")->fetch(PDO::FETCH_ASSOC);
+?>
 
   <div class="app-main__outer">
     <div class="app-main__inner">
@@ -59,6 +61,18 @@ if (!isset($_SESSION['admin']['adminLogin']) == true) header("location:index.php
                           <option value="<?php echo $selAllCourseRow['cou_id']; ?>"><?php echo $selAllCourseRow['cou_name']; ?></option>
                         <?php }
                         ?>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Unit</label>
+                      <select class="form-control" name="unitId" required="">
+                        <option value="<?php echo $selExamRow['unit_id']; ?>"><?php echo $selUnit['unitName']; ?></option>
+                        <?php
+                        $selAllUnit = $conn->query("SELECT * FROM unit_tbl ORDER BY unit_id DESC");
+                        while ($selAllUnitRow = $selAllUnit->fetch(PDO::FETCH_ASSOC)) { ?>
+                          <option value="<?php echo $selAllUnitRow['unit_id']; ?>"><?php echo $selAllUnitRow['unit_name']; ?></option>
+                        <?php } ?>
                       </select>
                     </div>
 
@@ -273,21 +287,14 @@ if (!isset($_SESSION['admin']['adminLogin']) == true) header("location:index.php
                       ?>
                     </div>
                   </div>
-
-
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
-
 
     <!-- MAO NI IYA FOOTER -->
     <?php include("includes/footer.php"); ?>
-
     <?php include("includes/modals.php"); ?>

@@ -35,23 +35,23 @@
                                 {
                                     while ($selExmneRow = $selExmne->fetch(PDO::FETCH_ASSOC)) { ?>
                                         <tr>
-                                           <td><?php echo $selExmneRow['exmne_fullname']; ?></td>
-                                           <td><?php echo $selExmneRow['exmne_gender']; ?></td>
-                                           <td><?php echo $selExmneRow['exmne_birthdate']; ?></td>
-                                           <td>
-                                            <?php 
-                                                 $exmneCourse = $selExmneRow['exmne_course'];
-                                                 $selCourse = $conn->query("SELECT * FROM course_tbl WHERE cou_id='$exmneCourse' ")->fetch(PDO::FETCH_ASSOC);
-                                                 echo $selCourse['cou_name'];
-                                             ?>
+                                            <td><?php echo $selExmneRow['exmne_fullname']; ?></td>
+                                            <td><?php echo $selExmneRow['exmne_gender']; ?></td>
+                                            <td><?php echo $selExmneRow['exmne_birthdate']; ?></td>
+                                            <td>
+                                                <?php 
+                                                    $exmneCourse = $selExmneRow['exmne_course'];
+                                                    $selCourse = $conn->query("SELECT * FROM course_tbl WHERE cou_id='$exmneCourse' ")->fetch(PDO::FETCH_ASSOC);
+                                                    echo $selCourse['cou_name'];
+                                                ?>
                                             </td>
-                                           <td><?php echo $selExmneRow['exmne_year_level']; ?></td>
-                                           <td><?php echo $selExmneRow['exmne_email']; ?></td>
-                                           <td><?php echo $selExmneRow['exmne_password']; ?></td>
-                                           <td><?php echo $selExmneRow['exmne_status']; ?></td>
-                                           <td>
-                                               <a rel="facebox" href="facebox_modal/updateExaminee.php?id=<?php echo $selExmneRow['exmne_id']; ?>" class="btn btn-sm btn-primary">Update</a>
-                                           </td>
+                                            <td><?php echo $selExmneRow['exmne_year_level']; ?></td>
+                                            <td><?php echo $selExmneRow['exmne_email']; ?></td>
+                                            <td><?php echo $selExmneRow['exmne_password']; ?></td>
+                                            <td><?php echo $selExmneRow['exmne_status']; ?></td>
+                                            <td>
+                                                <a rel="facebox" href="facebox_modal/updateExaminee.php?id=<?php echo $selExmneRow['exmne_id']; ?>" class="btn btn-sm btn-primary">Update</a>
+                                            </td>
                                         </tr>
                                     <?php }
                                 }

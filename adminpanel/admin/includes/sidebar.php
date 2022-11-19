@@ -56,6 +56,30 @@
                                        
                                     </ul>
                                 </li>
+
+                                <li class="app-sidebar__heading">Manage Units</li>
+                                <li>
+                                    <a href="#">
+                                         <i class="metismenu-icon pe-7s-display2"></i>
+                                         Units
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#modalForAddUnit">
+                                                <i class="metismenu-icon"></i>
+                                                Add Unit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.php?page=manage-unit">
+                                                <i class="metismenu-icon">
+                                                </i>Manage Units
+                                            </a>
+                                        </li>
+                                       
+                                    </ul>
+                                </li>
                                
                                 <li class="app-sidebar__heading">Manage Exams</li>
                                 <li>
@@ -77,7 +101,6 @@
                                                 </i>Manage Exams
                                             </a>
                                         </li>
-                                       
                                     </ul>
                                 </li>
                            
@@ -104,7 +127,6 @@
                                     </a>
                                 </li>
 
-
                                 <li class="app-sidebar__heading">Reports</li>
                                 <li>
                                     <a href="home.php?page=examinee-result">
@@ -112,16 +134,37 @@
                                         </i>Examinee Result
                                     </a>
                                 </li>
-                              
 
-                                 <li class="app-sidebar__heading">Feedbacks</li>
+                                <li class="app-sidebar__heading">Feedbacks</li>
                                 <li>
                                     <a href="home.php?page=feedbacks">
                                         <i class="metismenu-icon pe-7s-chat">
                                         </i>All Feedbacks
                                     </a>
                                 </li>
-                                
+
+                                <li class="app-sidebar__heading">Manage Audit Logs</li>
+                                <li>
+                                    <a href="#">
+                                        <i class="metismenu-icon pe-7s-display2"></i>
+                                        Audit Logs
+                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="home.php?page=admin-audit-logs">
+                                                <i class="metismenu-icon"></i>
+                                                Admin Audit Logs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.php?page=examinee-audit-logs">
+                                                <i class="metismenu-icon"></i>
+                                                Examinee Audit Logs
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
