@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 25, 2022 at 06:00 AM
+-- Generation Time: Nov 20, 2022 at 02:09 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -43,6 +42,44 @@ INSERT INTO `admin_acc` (`admin_id`, `admin_user`, `admin_pass`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_audit_logs`
+--
+
+CREATE TABLE `admin_audit_logs` (
+  `id` int(11) NOT NULL,
+  `user_id` int(30) NOT NULL,
+  `action_made` text NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_audit_logs`
+--
+
+INSERT INTO `admin_audit_logs` (`id`, `user_id`, `action_made`, `date_created`) VALUES
+(1, 1, 'Logged into the system', '2022-11-17 19:49:34'),
+(2, 1, 'Deleted question - Question 1', '2022-11-17 20:16:10'),
+(3, 1, 'Updated question - Question 3', '2022-11-17 20:31:44'),
+(4, 1, 'Logged out of the system', '2022-11-17 20:31:58'),
+(5, 1, 'Logged into the system', '2022-11-17 20:33:30'),
+(6, 1, 'Logged out of the system', '2022-11-17 20:49:48'),
+(7, 1, 'Logged into the system', '2022-11-17 21:43:55'),
+(8, 1, 'Logged into the system', '2022-11-19 09:35:00'),
+(9, 1, 'Logged into the system', '2022-11-19 10:04:38'),
+(10, 1, 'Created a new unit - ADVANCED PROGRAMMING', '2022-11-19 10:05:04'),
+(11, 1, 'Logged into the system', '2022-11-19 10:06:48'),
+(12, 1, 'Logged out of the system', '2022-11-19 10:06:52'),
+(13, 1, 'Logged into the system', '2022-11-19 10:06:54'),
+(14, 1, 'Logged into the system', '2022-11-19 10:07:37'),
+(15, 1, 'Created a new unit - ADVANCED PROGRAMMING', '2022-11-19 10:07:57'),
+(16, 1, 'Created a new unit - TEST UNIT NAME', '2022-11-19 10:13:25'),
+(17, 1, 'Deleted unit - UPDATED UNIT NAME', '2022-11-19 10:52:04'),
+(18, 1, 'Created a new exam - Essentials of Advanced Programming', '2022-11-19 12:00:47'),
+(19, 1, 'Created a new unit - TEST UNIT', '2022-11-19 12:16:25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `course_tbl`
 --
 
@@ -58,8 +95,35 @@ CREATE TABLE `course_tbl` (
 
 INSERT INTO `course_tbl` (`cou_id`, `cou_name`, `cou_created`) VALUES
 (25, 'BSHRM', '2019-11-27 09:26:08'),
-(65, 'BSCRIM UPDATED', '2022-10-16 10:58:20'),
+(26, 'BSCRIM UPDATED', '2022-11-15 16:31:57'),
 (66, 'B.SC. INFORMATION TECHNOLOGY', '2022-10-16 10:50:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `examinee_audit_logs`
+--
+
+CREATE TABLE `examinee_audit_logs` (
+  `id` int(11) NOT NULL,
+  `user_id` int(30) NOT NULL,
+  `action_made` text NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `examinee_audit_logs`
+--
+
+INSERT INTO `examinee_audit_logs` (`id`, `user_id`, `action_made`, `date_created`) VALUES
+(1, 9, 'Logged into the system', '2022-11-17 21:26:14'),
+(2, 9, 'Logged out of the system', '2022-11-17 21:28:44'),
+(3, 9, 'Logged into the system', '2022-11-17 21:28:56'),
+(4, 9, 'Logged out of the system', '2022-11-17 21:29:36'),
+(5, 8, 'Logged into the system', '2022-11-17 21:30:08'),
+(6, 8, 'New exam attempt - Communication Skills', '2022-11-17 21:39:28'),
+(7, 8, 'New feedback submitted', '2022-11-17 21:43:31'),
+(8, 8, 'Logged out of the system', '2022-11-17 21:43:44');
 
 -- --------------------------------------------------------
 
@@ -87,7 +151,7 @@ INSERT INTO `examinee_tbl` (`exmne_id`, `exmne_fullname`, `exmne_course`, `exmne
 (5, 'Jane Rivera', '25', 'female', '2019-11-14', 'second year', 'jane@gmail.com', 'jane', 'active'),
 (6, 'Glenn Duerme', '26', 'female', '2019-12-24', 'third year', 'glenn@gmail.com', 'glenn', 'active'),
 (7, 'Maria Duerme', '26', 'female', '2018-11-25', 'second year', 'maria@gmail.com', 'maria', 'active'),
-(8, 'Dave Limasac', '26', 'female', '2019-12-21', 'second year', 'dave@gmail.com', 'dave', 'active'),
+(8, 'Dave Limasac', '66', 'female', '2019-12-21', 'second year', 'dave@gmail.com', 'dave', 'active'),
 (9, 'JKUAT Student', '66', 'male', '2022-10-05', 'second year', 'jkuat@gmail.com', 'password', 'active');
 
 -- --------------------------------------------------------
@@ -145,7 +209,8 @@ INSERT INTO `exam_answers` (`exans_id`, `axmne_id`, `exam_id`, `quest_id`, `exan
 (345, 9, 16, 35, 'Business Intelligence', 'new', 0, '2022-10-24 13:29:56'),
 (346, 9, 16, 39, 'Personalization', 'new', 0, '2022-10-24 17:45:38'),
 (347, 9, 16, 36, 'Answer for performance management tool', 'new', 0, '2022-10-25 05:56:29'),
-(348, 9, 16, 32, 'All of the mentioned', 'new', 0, '2022-10-24 13:29:56');
+(348, 9, 16, 32, 'All of the mentioned', 'new', 0, '2022-10-24 13:29:56'),
+(349, 8, 15, 27, 'dsf', 'new', 0, '2022-11-17 18:39:28');
 
 -- --------------------------------------------------------
 
@@ -169,7 +234,8 @@ INSERT INTO `exam_attempt` (`examat_id`, `exmne_id`, `exam_id`, `examat_status`)
 (52, 4, 11, 'used'),
 (53, 4, 12, 'used'),
 (54, 8, 12, 'used'),
-(58, 9, 16, 'used');
+(58, 9, 16, 'used'),
+(59, 8, 15, 'used');
 
 -- --------------------------------------------------------
 
@@ -209,16 +275,15 @@ INSERT INTO `exam_question_tbl` (`eqt_id`, `exam_id`, `exam_question`, `question
 (24, 12, '	 In what year was the \"@\" chosen for its use in e-mail addresses?', 1, '1976', '1972', '1980', '1984', '1972', 'active'),
 (25, 12, 'What are three types of lasers?', 1, 'Gas, metal vapor, rock', 'Pointer, diode, CD', 'Diode, inverted, pointer', 'Gas, solid state, diode', 'Gas, solid state, diode', 'active'),
 (27, 15, 'asdasd', 1, 'dsf', 'sd', 'yui', 'sdf', 'yui', 'active'),
-(28, 11, 'Question 1', 1, 'q1', 'asd', 'fds', 'ytu', 'q1', 'active'),
 (29, 11, 'Question 2', 1, 'asd', 'sd', 'q2', 'dfg', 'q2', 'active'),
-(30, 11, 'Question 3', 1, 'sd', 'q3', 'asd', 'fgh', 'q3', 'active'),
+(30, 11, 'Updated Question 3', 1, 'sd', 'q3', 'asd', 'fgh', 'q3', 'active'),
 (31, 16, 'Business intelligence (BI) is a broad category of application programs which includes', 1, 'Decision support', 'Data mining', 'OLAP', 'All of the mentioned', 'All of the mentioned', 'active'),
 (32, 16, 'BI can catalyze a business’s success in terms of', 1, 'Distinguish the products and services that drive revenues', 'Rank customers and locations based on profitability', 'Ranks customers and locations based on probability', 'All of the mentioned', 'Ranks customers and locations based on probability', 'active'),
 (33, 16, 'Point out the wrong statement', 1, 'Data is factual information for analysis', 'BI is a category of database software that provides an interface to help users quickly and interactively scrutinize the results in a variety of dimensions of the data', 'Customer relationship management (CRM) entails all aspects of interaction that a company has with its customer', 'None of the mentioned', 'BI is a category of database software that provides an interface to help users quickly and interactively scrutinize the results in a variety of dimensions of the data', 'active'),
 (35, 16, 'What is BI in full?', 1, 'Business Intelligence', 'Business Intellect', 'Business Impression', 'Business Idea', 'Business Intelligence', 'active'),
 (36, 16, 'What is a performance management tool that recapitulates an organization’s performance from several standpoints on a single page?', 2, '', '', '', '', 'Balanced Scorecard', 'active'),
 (37, 16, 'Data warehouse architecture is based on', 1, 'RDBMS', 'Sybase', 'SQL Server', 'DBMS', 'RDBMS', 'active'),
-(38, 16, 'Record cannot be updated in', 1, 'Files', 'OLTP', 'RDBMS', 'Data Warehouse', 'Data Warehouse', 'active'),
+(38, 16, 'Record cannot be updated in:', 1, 'Files', 'OLTP', 'RDBMS', 'Data Warehouse', 'Data Warehouse', 'active'),
 (39, 16, 'In an Internet context, what is the practice of tailoring Web pages to individual users’ characteristics or preferences?', 2, '', '', '', '', 'Personalization', 'active');
 
 -- --------------------------------------------------------
@@ -230,6 +295,7 @@ INSERT INTO `exam_question_tbl` (`eqt_id`, `exam_id`, `exam_question`, `question
 CREATE TABLE `exam_tbl` (
   `ex_id` int(11) NOT NULL,
   `cou_id` int(11) NOT NULL,
+  `unit_id` int(11) NOT NULL,
   `ex_title` varchar(1000) NOT NULL,
   `ex_type` int(11) DEFAULT '1',
   `ex_time_limit` varchar(1000) NOT NULL,
@@ -242,13 +308,14 @@ CREATE TABLE `exam_tbl` (
 -- Dumping data for table `exam_tbl`
 --
 
-INSERT INTO `exam_tbl` (`ex_id`, `cou_id`, `ex_title`, `ex_type`, `ex_time_limit`, `ex_questlimit_display`, `ex_description`, `ex_created`) VALUES
-(11, 26, 'Duerms', 1, '1', 2, 'qwe', '2019-12-05 12:03:21'),
-(12, 26, 'Another Exam', 1, '1', 5, 'Mabilisang Exam', '2019-12-04 15:19:18'),
-(13, 26, 'Exam Again', 1, '5', 0, 'again and again', '2022-09-18 10:52:20'),
-(14, 66, 'Fundamentals of Computer Security', 1, '60', 10, 'Comprehensive Description for Fundamentals of Computer Security', '2022-10-16 11:15:49'),
-(15, 66, 'Communication Skills', 1, '3', 5, 'Description for Communication Skills', '2022-10-16 11:22:09'),
-(16, 66, 'Business Intelligence', 3, '50', 10, 'Business Intelligence', '2022-10-16 11:47:59');
+INSERT INTO `exam_tbl` (`ex_id`, `cou_id`, `unit_id`, `ex_title`, `ex_type`, `ex_time_limit`, `ex_questlimit_display`, `ex_description`, `ex_created`) VALUES
+(11, 26, 1, 'Duerms', 1, '1', 2, 'qwe', '2022-11-19 08:49:47'),
+(12, 26, 1, 'Another Exam', 1, '1', 5, 'Mabilisang Exam', '2022-11-19 08:49:50'),
+(13, 26, 1, 'Exam Again', 1, '5', 0, 'again and again', '2022-11-19 08:49:52'),
+(14, 66, 1, 'Fundamentals of Computer Security', 1, '60', 10, 'Comprehensive Description for Fundamentals of Computer Security', '2022-11-19 08:49:54'),
+(15, 66, 1, 'Communication Skills', 1, '3', 5, 'Description for Communication Skills', '2022-11-19 08:49:56'),
+(16, 66, 1, 'Business Intelligence', 3, '50', 10, 'Business Intelligence', '2022-11-19 08:49:58'),
+(17, 66, 3, 'Essentials of Advanced Programming', 2, '40', 500, 'Essentials of Advanced Programming', '2022-11-19 09:30:52');
 
 -- --------------------------------------------------------
 
@@ -274,7 +341,31 @@ INSERT INTO `feedbacks_tbl` (`fb_id`, `exmne_id`, `fb_exmne_as`, `fb_feedbacks`,
 (6, 4, 'Rogz Nunezsss', 'Yes', 'December 08, 2019'),
 (7, 4, '', '', 'December 08, 2019'),
 (8, 4, '', '', 'December 08, 2019'),
-(9, 8, 'Anonymous', 'dfsdf', 'January 05, 2020');
+(9, 8, 'Anonymous', 'dfsdf', 'January 05, 2020'),
+(10, 8, 'Dave Limasac', 'Test feedback here', 'November 17, 2022'),
+(11, 8, 'Dave Limasac', 'Test feedback here', 'November 17, 2022');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit_tbl`
+--
+
+CREATE TABLE `unit_tbl` (
+  `unit_id` int(11) NOT NULL,
+  `cou_id` int(11) NOT NULL,
+  `unit_code` varchar(1000) NOT NULL,
+  `unit_name` varchar(1000) NOT NULL,
+  `unit_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `unit_tbl`
+--
+
+INSERT INTO `unit_tbl` (`unit_id`, `cou_id`, `unit_code`, `unit_name`, `unit_created`) VALUES
+(1, 66, 'BIT 2210', 'ADVANCED PROGRAMMING', '2022-11-19 07:07:57'),
+(3, 26, 'BTE 4843', 'TEST UNIT', '2022-11-19 09:16:25');
 
 --
 -- Indexes for dumped tables
@@ -287,10 +378,24 @@ ALTER TABLE `admin_acc`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `admin_audit_logs`
+--
+ALTER TABLE `admin_audit_logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `course_tbl`
 --
 ALTER TABLE `course_tbl`
   ADD PRIMARY KEY (`cou_id`);
+
+--
+-- Indexes for table `examinee_audit_logs`
+--
+ALTER TABLE `examinee_audit_logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `examinee_tbl`
@@ -329,6 +434,12 @@ ALTER TABLE `feedbacks_tbl`
   ADD PRIMARY KEY (`fb_id`);
 
 --
+-- Indexes for table `unit_tbl`
+--
+ALTER TABLE `unit_tbl`
+  ADD PRIMARY KEY (`unit_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -339,10 +450,22 @@ ALTER TABLE `admin_acc`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `admin_audit_logs`
+--
+ALTER TABLE `admin_audit_logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT for table `course_tbl`
 --
 ALTER TABLE `course_tbl`
   MODIFY `cou_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT for table `examinee_audit_logs`
+--
+ALTER TABLE `examinee_audit_logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `examinee_tbl`
@@ -354,13 +477,13 @@ ALTER TABLE `examinee_tbl`
 -- AUTO_INCREMENT for table `exam_answers`
 --
 ALTER TABLE `exam_answers`
-  MODIFY `exans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=349;
+  MODIFY `exans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 
 --
 -- AUTO_INCREMENT for table `exam_attempt`
 --
 ALTER TABLE `exam_attempt`
-  MODIFY `examat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `examat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `exam_question_tbl`
@@ -372,14 +495,35 @@ ALTER TABLE `exam_question_tbl`
 -- AUTO_INCREMENT for table `exam_tbl`
 --
 ALTER TABLE `exam_tbl`
-  MODIFY `ex_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ex_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `feedbacks_tbl`
 --
 ALTER TABLE `feedbacks_tbl`
-  MODIFY `fb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-COMMIT;
+  MODIFY `fb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `unit_tbl`
+--
+ALTER TABLE `unit_tbl`
+  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin_audit_logs`
+--
+ALTER TABLE `admin_audit_logs`
+  ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `admin_acc` (`admin_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `examinee_audit_logs`
+--
+ALTER TABLE `examinee_audit_logs`
+  ADD CONSTRAINT `examinee_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `examinee_tbl` (`exmne_id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
