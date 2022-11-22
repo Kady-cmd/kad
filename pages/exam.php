@@ -14,7 +14,6 @@ $selExamTimeLimit = $selExam['ex_time_limit'];
 $exDisplayLimit = $selExam['ex_questlimit_display'];
 ?>
 
-
 <div class="app-main__outer">
     <div class="app-main__inner">
         <div class="col-md-12">
